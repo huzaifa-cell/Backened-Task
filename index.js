@@ -33,5 +33,11 @@ app.delete('/books/:id',async (req,res)=>{
      await books.findOneAndDelete({_id});
      res.json({msg:"Successfully deleted"})
 })
+aap.put('./books/:id',async (req,res)=>{
+    const _id = req.params.id
+    const {title,author} = req.body
+    await books.findOneAndUpdate({_id},{title,author})
+    res.json({msg:"Updated"})
+})
 app.listen(7000,()=>{console.log("server started");
 })
